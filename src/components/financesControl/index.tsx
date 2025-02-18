@@ -131,9 +131,9 @@ export default function FinancesControl() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207"
                   />
                 </svg>
@@ -583,7 +583,7 @@ export default function FinancesControl() {
             <p>Responsavel pela venda</p>
             <div className="space-y-2">
               <select className="w-full p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 bg-[#F5F5F5] cursor-pointer">
-                <option value="" disabled selected>
+                <option value="0" disabled>
                   Selecione um responsável
                 </option>
                 <option value="1">João Silva</option>
@@ -597,7 +597,7 @@ export default function FinancesControl() {
             <p>Produto</p>
             <div className="space-y-2">
               <select className="w-full p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 bg-[#F5F5F5] cursor-pointer">
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Selecione um produto
                 </option>
                 <option value="1">Produto 1</option>
@@ -642,7 +642,7 @@ export default function FinancesControl() {
             <p>Responsavel pelo serviço</p>
             <div className="space-y-2">
               <select className="w-full p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 bg-[#F5F5F5] cursor-pointer">
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Selecione um responsável
                 </option>
                 <option value="1">João Silva</option>
@@ -656,7 +656,7 @@ export default function FinancesControl() {
             <p>Serviço</p>
             <div className="space-y-2">
               <select className="w-full p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 bg-[#F5F5F5] cursor-pointer">
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Selecione um Serviço
                 </option>
                 <option value="1">Serviço 1</option>

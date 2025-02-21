@@ -320,6 +320,30 @@ export default function Agenda() {
           <div className="pb-[12px] border-b-2 border-pink-500 mb-[40px]">
             <p className="font-bold text-[#D33180]">DADOS DO AGENDAMENTO</p>
           </div>
+
+          <div className="mb-[40px] flex flex-col gap-3">
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Nome do cliente
+            </div>
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Email: email@email.com
+            </div>
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Telefone: 00 4002-8922
+            </div>
+          </div>
+
+          <div className="mb-[40px] flex flex-col gap-3">
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Nome do cliente
+            </div>
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Email: email@email.com
+            </div>
+            <div className="pb-[10px] border-b-2 border-gray-500 text-[#2C2C2C]">
+              Telefone: 00 4002-8922
+            </div>
+          </div>
         </div>
       </Drawer>
     </div>

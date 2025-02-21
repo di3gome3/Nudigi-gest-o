@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ClientModal from "../ClientModal";
 
 export default function Clients() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [clientsPerPage, setClientsPerPage] = useState<number>(10);
-  const [totalClients, setTotalClients] = useState<number>(100);
+  const [users, setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [clientsPerPage] = useState(10);
+  const [totalClients, setTotalClients] = useState(0);
 
   const totalPages = Math.ceil(totalClients / clientsPerPage);
 
-  const handlePageChange = (pageNumber: number) => {
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
@@ -25,39 +27,35 @@ export default function Clients() {
     }
   };
 
+  //i used this requisition just for test for see how the real users will appear on the table
+  const fetchUsers = async () => {
+    const URL = "https://dummyjson.com/users";
+    try {
+      const resp = await fetch(URL);
+      if (resp.status === 200) {
+        const obj = await resp.json();
+        setUsers(obj.users);
+        setTotalClients(obj.users.length); 
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const startIndex = (currentPage - 1) * clientsPerPage;
   const endIndex = startIndex + clientsPerPage;
 
-  const clients = Array.from({ length: totalClients }).map((_, index) => ({
-    id: index + 1,
-    name: `Cliente ${index + 1}`,
-    phone: `(11) 91234-5678`,
-    sex: "Masculino",
-    email: `cliente${index + 1}@exemplo.com`,
-  }));
 
-  const paginatedClients = clients.slice(startIndex, endIndex);
+  const paginatedUsers = users.slice(startIndex, endIndex);
 
   return (
     <div className="w-full h-full flex flex-col gap-4 items-center justify-center">
       <div className="h-[40px] w-full flex justify-between items-center">
         <div className="w-[118px] flex gap-2 p-2 rounded-[50px] bg-[#F5F5F5] items-center justify-center">
-          <svg
-            className="w-6 h-6 text-[#D33180]"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"
-            />
-          </svg>
           <p className="text-[#D33180]">Filtrar</p>
         </div>
 
@@ -98,25 +96,27 @@ export default function Clients() {
             </tr>
           </thead>
           <tbody>
-            {paginatedClients.map((client, index) => (
+            {paginatedUsers.map((user, index) => (
               <tr
-                key={client.id}
-                className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}
+                key={user.id}
+                className="border-b-2 border-gray-300"
               >
-                <td className=" border-gray-300 py-2 px-4 text-center flex items-center justify-left gap-2">
-                  <div className="w-[40px] h-[40px] bg-gray-500 rounded-full inline-block"></div>
-                  {client.name}
+                <td className="border-gray-300 py-2 px-4 text-center flex items-center justify-left gap-2">
+                  <div className="w-[40px] h-[40px] bg-gray-500 rounded-full inline-block">
+                    <img src={user.image} className="w-full h-full" />
+                  </div>
+                  {user.firstName} {user.lastName}
                 </td>
-                <td className=" border-gray-300 py-2 px-4 text-center">
-                  {client.phone}
+                <td className="border-gray-300 py-2 px-4 text-center">
+                  {user.phone || "N/A"}
                 </td>
-                <td className=" border-gray-300 py-2 px-4 text-center">
-                  {client.sex}
+                <td className="border-gray-300 py-2 px-4 text-center">
+                  {user.gender}
                 </td>
-                <td className=" border-gray-300 py-2 px-4 text-center">
-                  {client.email}
+                <td className="border-gray-300 py-2 px-4 text-center">
+                  {user.email}
                 </td>
-                <td className=" border-gray-300 py-2 px-4 text-center">
+                <td className="border-gray-300 py-2 px-4 text-center">
                   <div className="flex justify-center gap-2">
                     <svg
                       className="w-6 h-6 text-[#D33180]"

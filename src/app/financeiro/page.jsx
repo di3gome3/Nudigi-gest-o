@@ -11,17 +11,19 @@ export default function Financieiro() {
         <Sidebar />
       </div>
 
-      <div className="col-span-1 md:col-span-4 grid grid-cols-1 md:grid-cols-4 flex items-center h-[48px]">
+      <div className="col-span-1 md:col-span-4 grid grid-cols-1 md:grid-cols-4">
         <div className="col-span-1 md:col-span-4 w-full">
-        <Navbar />
+          <Navbar />
         </div>
 
-        <div className="col-span-1 md:col-span-2 flex items-center p-8">
-          <FinancesControl />
-        </div>
+        <div className="col-span-4 flex h-full w-full items-center justifty-center grid grid -cols-1 md:grid-cols-4">
+          <div className="col-span-1 md:col-span-2 flex items-center p-8">
+            <FinancesControl />
+          </div>
 
-        <div className="col-span-1 md:col-span-2 flex items-center justify-center p-8">
-          <FinancesReleases />
+          <div className="col-span-1 md:col-span-2 flex items-center justify-center p-8">
+            <FinancesReleases />
+          </div>
         </div>
       </div>
     </div>

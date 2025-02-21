@@ -316,7 +316,7 @@ export default function Agenda() {
       </div>
 
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-      <div className="flex flex-col h-full w-full gap-2">
+        <div className="flex flex-col h-full w-full gap-2">
           <div className="pb-[12px] border-b-2 border-pink-500 mb-[40px]">
             <p className="font-bold text-[#D33180]">DADOS DO AGENDAMENTO</p>
           </div>
